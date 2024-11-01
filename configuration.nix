@@ -15,6 +15,13 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
+  nix.gc = {
+	automatic = true;
+	dates = "weekly";
+	options = "--delete-older-than 7d";
+	};
+
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -98,6 +105,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim 
+    neovim
     wget
     git
     python3Full
